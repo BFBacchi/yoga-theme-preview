@@ -1,0 +1,1369 @@
+/* ==========================================================================
+   Yoga — Mejoras visuales · Tema oscuro
+   Capa de estilos cargada después de style.css del tema, sin modificarlo.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Tokens de diseño
+   -------------------------------------------------------------------------- */
+:root {
+	/* Acentos */
+	--yoga-primary: #a855f7;
+	--yoga-primary-600: #8b3ddb;
+	--yoga-primary-400: #c084fc;
+	--yoga-primary-050: rgba(168, 85, 247, .16);
+
+	--yoga-accent: #fbbf24;
+	--yoga-cyan: #22d3ee;
+	--yoga-pink: #f472b6;
+
+	/* Superficies */
+	--yoga-bg: #08060f;
+	--yoga-bg-2: #0d0a18;
+	--yoga-ink: #f6f3ff;
+	--yoga-body: #b3abc9;
+	--yoga-muted: #8a83a4;
+	--yoga-line: rgba(255, 255, 255, .10);
+	--yoga-soft: rgba(255, 255, 255, .04);
+
+	/* Cristal */
+	--yoga-glass: rgba(255, 255, 255, .045);
+	--yoga-glass-2: rgba(255, 255, 255, .075);
+	--yoga-glass-border: rgba(255, 255, 255, .12);
+	--yoga-glass-highlight: rgba(255, 255, 255, .22);
+
+	/* Formas */
+	--yoga-radius: 16px;
+	--yoga-radius-sm: 10px;
+	--yoga-radius-lg: 26px;
+
+	/* Sombras y brillos */
+	--yoga-shadow-sm: 0 2px 12px rgba(0, 0, 0, .5);
+	--yoga-shadow: 0 18px 44px -18px rgba(0, 0, 0, .85);
+	--yoga-shadow-lg: 0 34px 70px -26px rgba(0, 0, 0, .95);
+	--yoga-glow: 0 0 0 1px rgba(168, 85, 247, .45), 0 12px 40px -12px rgba(168, 85, 247, .65);
+
+	--yoga-ease: cubic-bezier(.22, .61, .36, 1);
+	--yoga-header-h: 76px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Base
+   -------------------------------------------------------------------------- */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: calc(var(--yoga-header-h) + 16px);
+	-webkit-text-size-adjust: 100%;
+	background: var(--yoga-bg);
+}
+
+body {
+	color: var(--yoga-body);
+	line-height: 1.75;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* `clip` en lugar de `hidden`: `hidden` convierte el body en contenedor
+	   de scroll y rompe `position: sticky` de la cabecera. */
+	overflow-x: clip;
+	background: var(--yoga-bg);
+}
+
+@supports not (overflow: clip) {
+	body {
+		overflow-x: hidden;
+	}
+}
+
+/* El tema pinta .wrapper de blanco puro; se deja transparente para que
+   se vea la capa de fondo. */
+.wrapper {
+	background: transparent;
+	position: relative;
+	z-index: 1;
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+	color: var(--yoga-ink);
+	font-family: 'Josefin Sans', sans-serif;
+	font-weight: 600;
+	letter-spacing: .2px;
+}
+
+h1, .h1 { font-size: 42px; line-height: 1.2; }
+h2, .h2 { font-size: 36px; line-height: 1.25; }
+h3, .h3 { font-size: 28px; line-height: 1.3; }
+h4, .h4 { font-size: 23px; line-height: 1.35; }
+
+p { margin-bottom: 20px; }
+
+a {
+	color: var(--yoga-primary-400);
+	transition: color .25s var(--yoga-ease);
+}
+
+a:hover { color: var(--yoga-pink); }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--yoga-cyan);
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+img { max-width: 100%; }
+
+/* El tema no reinicia <figure>, así que el navegador deja el margen por
+   defecto (1em 40px) y el hero queda con huecos laterales. */
+figure {
+	margin: 0;
+}
+
+::selection {
+	background: var(--yoga-primary);
+	color: #fff;
+}
+
+/* Barra de desplazamiento */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #0b0814; }
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, var(--yoga-primary), var(--yoga-pink));
+	border-radius: 99px;
+	border: 3px solid #0b0814;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--yoga-primary-400); }
+
+/* --------------------------------------------------------------------------
+   2b. Fondo
+   Malla de auroras muy saturadas + grano, sobre negro profundo.
+   -------------------------------------------------------------------------- */
+body::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background:
+		radial-gradient(52rem 46rem at 2% -10%, rgba(168, 85, 247, .42), transparent 62%),
+		radial-gradient(44rem 38rem at 102% 4%, rgba(244, 114, 182, .30), transparent 64%),
+		radial-gradient(50rem 44rem at 96% 52%, rgba(34, 211, 238, .26), transparent 62%),
+		radial-gradient(46rem 40rem at -6% 76%, rgba(99, 102, 241, .32), transparent 64%),
+		radial-gradient(52rem 46rem at 44% 106%, rgba(251, 191, 36, .18), transparent 66%),
+		linear-gradient(180deg, #0a0714 0%, #08060f 45%, #0b0716 100%);
+}
+
+body::after {
+	content: "";
+	position: fixed;
+	inset: 0;
+	z-index: 2;
+	pointer-events: none;
+	opacity: .07;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+	background-size: 160px 160px;
+}
+
+/* Tintes de sección */
+.yoga-section,
+.yoga-blog-section .overlay {
+	background: transparent;
+}
+
+#service {
+	background:
+		radial-gradient(60rem 40rem at 50% -10%, rgba(168, 85, 247, .22), transparent 70%);
+}
+
+.yoga-blog-section .overlay {
+	background:
+		radial-gradient(56rem 38rem at 50% -6%, rgba(34, 211, 238, .14), transparent 70%);
+}
+
+/* Pie de página */
+footer .overlay {
+	background:
+		radial-gradient(44rem 30rem at 10% 0%, rgba(168, 85, 247, .40), transparent 64%),
+		radial-gradient(38rem 26rem at 92% 12%, rgba(34, 211, 238, .22), transparent 66%),
+		linear-gradient(180deg, #150f26 0%, #0d0917 55%, #070510 100%);
+}
+
+/* Barra superior */
+.yoga-head-detail {
+	background: linear-gradient(90deg, #241640 0%, #161029 55%, #241640 100%);
+}
+
+/* --------------------------------------------------------------------------
+   3. Preloader
+   Se oculta siempre por CSS para que, si el JavaScript falla o una fuente
+   externa se queda colgada, el contenido nunca quede bloqueado.
+   -------------------------------------------------------------------------- */
+.yoga-preloader {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--yoga-bg);
+	animation: yoga-preloader-out .6s ease 1.4s forwards;
+}
+
+.yoga-preloader.is-done {
+	opacity: 0;
+	visibility: hidden;
+}
+
+@keyframes yoga-preloader-out {
+	to {
+		opacity: 0;
+		visibility: hidden;
+	}
+}
+
+.yoga-preloader__inner { text-align: center; }
+
+.yoga-preloader__mark {
+	width: 58px;
+	height: 58px;
+	margin: 0 auto 18px;
+	border: 3px solid rgba(168, 85, 247, .22);
+	border-top-color: var(--yoga-primary);
+	border-right-color: var(--yoga-pink);
+	border-radius: 50%;
+	animation: yoga-spin .8s linear infinite;
+}
+
+.yoga-preloader__text {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 13px;
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	color: var(--yoga-muted);
+}
+
+@keyframes yoga-spin {
+	to { transform: rotate(360deg); }
+}
+
+/* Modo sin animaciones (?yoga_clean=1), útil para capturas y depuración */
+body.yoga-clean .yoga-preloader { display: none; }
+
+body.yoga-clean .yoga-reveal {
+	opacity: 1 !important;
+	transform: none !important;
+	transition: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. Cabecera
+   OJO: la clase .yoga-trhead que usa el tema en sus CSS no existe en el
+   HTML (la clase real es .yoga-main-nav), así que sus reglas están muertas.
+   Aquí se trabaja sobre la clase que sí se renderiza.
+   -------------------------------------------------------------------------- */
+.yoga-standardhead {
+	position: relative;
+	z-index: 1000;
+}
+
+.yoga-head-detail {
+	font-size: 13px;
+	letter-spacing: .2px;
+	transition: max-height .35s var(--yoga-ease), opacity .3s var(--yoga-ease);
+}
+
+.yoga-head-detail .info-left li a,
+.yoga-head-detail .info-left li a i {
+	color: rgba(255, 255, 255, .74);
+	transition: color .25s var(--yoga-ease);
+}
+
+.yoga-head-detail .info-left li a:hover,
+.yoga-head-detail .info-left li a:hover i {
+	color: #fff;
+}
+
+.yoga-head-detail .info-left li i {
+	margin-right: 7px;
+	color: var(--yoga-accent);
+}
+
+.yoga-social-navigation a {
+	transition: transform .25s var(--yoga-ease), color .25s var(--yoga-ease);
+}
+
+.yoga-social-navigation a:hover {
+	transform: translateY(-2px);
+	color: var(--yoga-primary-400);
+}
+
+/* Navegación: cristal con desenfoque.
+   Hay que pisar también `.navbar-default`, porque Bootstrap le pone fondo
+   claro y borde gris al <nav> interior. */
+.yoga-main-nav,
+.yoga-main-nav .navbar-default,
+.yoga-main-nav .navbar-wp {
+	background: rgba(12, 9, 22, .72);
+	backdrop-filter: blur(18px) saturate(160%);
+	-webkit-backdrop-filter: blur(18px) saturate(160%);
+	border-color: transparent;
+	box-shadow: none;
+	transition: box-shadow .35s var(--yoga-ease), background .35s var(--yoga-ease);
+}
+
+.yoga-main-nav .navbar-wp {
+	padding: 14px 0;
+	transition: padding .35s var(--yoga-ease);
+}
+
+/* Bootstrap pinta un fondo gris en el elemento activo del menú
+   (.navbar-default .navbar-nav > .active > a { background-color:#e7e7e7 }). */
+.yoga-main-nav .navbar-wp .navbar-nav > li > a,
+.yoga-main-nav .navbar-wp .navbar-nav > .active > a,
+.yoga-main-nav .navbar-wp .navbar-nav > .active > a:hover,
+.yoga-main-nav .navbar-wp .navbar-nav > .active > a:focus {
+	background: transparent;
+	color: var(--yoga-body);
+}
+
+.yoga-main-nav .navbar-wp .navbar-nav > li > a:hover,
+.yoga-main-nav .navbar-wp .navbar-nav > .active > a,
+.yoga-main-nav .navbar-wp .navbar-nav > .current-menu-item > a {
+	color: #fff;
+}
+
+.yoga-main-nav .navbar-brand {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 26px;
+	font-weight: 600;
+	letter-spacing: 2px;
+	line-height: 1;
+	color: #fff;
+	padding-top: 6px;
+}
+
+.yoga-main-nav .navbar-brand img {
+	max-height: 44px;
+	width: auto;
+}
+
+.yoga-main-nav .navbar-brand .site-description {
+	color: var(--yoga-muted);
+	letter-spacing: .3px;
+}
+
+.yoga-main-nav .navbar-nav > li > a {
+	font-weight: 500;
+	letter-spacing: .4px;
+	position: relative;
+}
+
+.yoga-main-nav .navbar-nav > li > a::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 6px;
+	height: 2px;
+	width: 0;
+	background: linear-gradient(90deg, var(--yoga-primary), var(--yoga-pink));
+	border-radius: 2px;
+	transition: width .3s var(--yoga-ease);
+}
+
+.yoga-main-nav .navbar-nav > li > a:hover::after,
+.yoga-main-nav .navbar-nav > .active > a::after,
+.yoga-main-nav .navbar-nav > .open > a::after {
+	width: 100%;
+}
+
+/* Estado al hacer scroll: la cabecera pasa a position: fixed (lo gestiona
+   yoga-visual.js, que inserta un espaciador para que el contenido no salte)
+   y la barra superior se oculta, dejando solo la navegación. */
+.yoga-standardhead.is-stuck {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	animation: yoga-header-in .35s var(--yoga-ease);
+}
+
+.yoga-standardhead.is-stuck .yoga-head-detail {
+	display: none;
+}
+
+.yoga-standardhead.is-stuck .yoga-main-nav,
+.yoga-standardhead.is-stuck .yoga-main-nav .navbar-default,
+.yoga-standardhead.is-stuck .yoga-main-nav .navbar-wp {
+	background: rgba(8, 6, 15, .9);
+	box-shadow: 0 10px 40px -14px rgba(168, 85, 247, .5);
+}
+
+.yoga-standardhead.is-stuck .yoga-main-nav .navbar-wp {
+	padding: 8px 0;
+}
+
+@keyframes yoga-header-in {
+	from { transform: translateY(-100%); }
+	to { transform: translateY(0); }
+}
+
+/* Botón del menú móvil */
+.yoga-main-nav .navbar-toggle {
+	border-color: var(--yoga-glass-border);
+	border-radius: 8px;
+}
+
+.yoga-main-nav .navbar-toggle .icon-bar {
+	background: var(--yoga-ink);
+}
+
+/* --------------------------------------------------------------------------
+   5. Secciones y títulos
+   -------------------------------------------------------------------------- */
+.yoga-section {
+	padding: 96px 0;
+}
+
+.yoga-heading {
+	margin-bottom: 50px;
+}
+
+.yoga-heading .yoga-heading-inner {
+	line-height: 1.2;
+	letter-spacing: .5px;
+	/* default.css fija `color:#212121` con más especificidad; se restablece
+	   aquí para que el degradado de texto tenga respaldo legible. */
+	color: var(--yoga-ink);
+	background: linear-gradient(100deg, #fff 20%, var(--yoga-primary-400) 60%, var(--yoga-pink) 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.yoga-heading .yoga-heading-inner::after {
+	content: "";
+	display: block;
+	width: 58px;
+	height: 3px;
+	margin: 18px auto 0;
+	border-radius: 3px;
+	background: linear-gradient(90deg, var(--yoga-primary), var(--yoga-pink), var(--yoga-accent));
+	box-shadow: 0 0 18px rgba(168, 85, 247, .8);
+}
+
+.yoga-heading .subtitle {
+	color: var(--yoga-muted);
+	font-weight: 400;
+	font-size: 17px;
+	line-height: 1.7;
+	max-width: 760px;
+	margin: 18px auto 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. Botones
+   -------------------------------------------------------------------------- */
+.btn {
+	border-radius: 999px;
+	font-weight: 600;
+	letter-spacing: .5px;
+	padding: 12px 28px;
+	transition: transform .25s var(--yoga-ease), box-shadow .25s var(--yoga-ease),
+		background .25s var(--yoga-ease), color .25s var(--yoga-ease);
+}
+
+.btn-theme,
+.btn-tislider {
+	background: linear-gradient(120deg, var(--yoga-primary) 0%, #d946ef 55%, var(--yoga-pink) 100%);
+	border: 2px solid transparent;
+	color: #fff;
+	box-shadow: 0 10px 28px -12px rgba(168, 85, 247, .9);
+}
+
+.btn-theme:hover,
+.btn-theme:focus,
+.btn-tislider:hover,
+.btn-tislider:focus {
+	background: linear-gradient(120deg, #8b3ddb 0%, #c026d3 55%, #db2777 100%);
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 16px 38px -12px rgba(217, 70, 239, .95);
+}
+
+.btn-theme-two {
+	background: var(--yoga-glass);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 2px solid var(--yoga-glass-border);
+	color: var(--yoga-ink);
+}
+
+.btn-theme-two:hover,
+.btn-theme-two:focus {
+	background: var(--yoga-primary);
+	border-color: var(--yoga-primary);
+	color: #fff;
+	transform: translateY(-2px);
+	box-shadow: 0 14px 32px -12px rgba(168, 85, 247, .9);
+}
+
+.btn-theme-three {
+	background: var(--yoga-glass);
+	border: 2px solid var(--yoga-glass-border);
+	color: var(--yoga-ink);
+}
+
+.btn-theme-three:hover,
+.btn-theme-three:focus {
+	background: #fff;
+	border-color: #fff;
+	color: #0a0714;
+	transform: translateY(-2px);
+	box-shadow: 0 14px 32px -12px rgba(255, 255, 255, .45);
+}
+
+/* --------------------------------------------------------------------------
+   7. Deslizador (hero)
+   -------------------------------------------------------------------------- */
+.yoga-slider-warraper {
+	position: relative;
+}
+
+#yoga-slider .item img {
+	width: 100%;
+	height: 660px;
+	object-fit: cover;
+	display: block;
+}
+
+#yoga-slider .yoga-slider-inner {
+	background: linear-gradient(95deg, rgba(10, 6, 20, .88) 0%, rgba(10, 6, 20, .55) 48%, rgba(10, 6, 20, .12) 100%);
+}
+
+#yoga-slider .slide-caption {
+	width: 56%;
+	margin: 0 auto;
+	text-align: left;
+}
+
+#yoga-slider .slide-caption h1 {
+	font-size: 56px;
+	line-height: 1.12;
+	font-weight: 600;
+	color: #fff;
+	text-shadow: 0 4px 30px rgba(0, 0, 0, .7);
+}
+
+#yoga-slider .slide-caption .description p {
+	font-size: 18px;
+	line-height: 1.7;
+	color: rgba(255, 255, 255, .88);
+	text-shadow: 0 2px 14px rgba(0, 0, 0, .6);
+	letter-spacing: .2px;
+}
+
+#yoga-slider .btn-tislider {
+	margin-top: 8px;
+}
+
+/* Efecto Ken Burns en la diapositiva activa */
+#yoga-slider .owl-item.active .item img {
+	animation: yoga-kenburns 9s ease-out forwards;
+}
+
+@keyframes yoga-kenburns {
+	from { transform: scale(1); }
+	to { transform: scale(1.07); }
+}
+
+.yoga-slider-warraper .owl-controls .owl-pagination {
+	bottom: 30px;
+}
+
+.yoga-slider-warraper .owl-page span {
+	background: rgba(255, 255, 255, .4);
+	transition: all .3s var(--yoga-ease);
+}
+
+.yoga-slider-warraper .owl-page.active span {
+	background: linear-gradient(120deg, var(--yoga-primary), var(--yoga-pink));
+	transform: scale(1.3);
+	box-shadow: 0 0 16px rgba(168, 85, 247, .9);
+}
+
+/* --------------------------------------------------------------------------
+   8. Tarjetas de servicio
+   -------------------------------------------------------------------------- */
+#service .yoga-service {
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius);
+	background: var(--yoga-glass);
+	backdrop-filter: blur(16px) saturate(140%);
+	-webkit-backdrop-filter: blur(16px) saturate(140%);
+	box-shadow: var(--yoga-shadow-sm);
+	transition: transform .4s var(--yoga-ease), box-shadow .4s var(--yoga-ease),
+		background .4s var(--yoga-ease);
+	overflow: visible;
+	position: relative;
+}
+
+#service .yoga-service:hover {
+	transform: translateY(-8px);
+	background: var(--yoga-glass-2);
+	box-shadow: var(--yoga-shadow-lg), 0 0 0 1px rgba(168, 85, 247, .35),
+		0 24px 60px -20px rgba(168, 85, 247, .55);
+}
+
+/* Borde degradado al pasar el ratón */
+#service .yoga-service::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: linear-gradient(135deg, var(--yoga-primary), var(--yoga-pink) 45%, var(--yoga-cyan));
+	-webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+	opacity: 0;
+	transition: opacity .4s var(--yoga-ease);
+	pointer-events: none;
+}
+
+#service .yoga-service:hover::before { opacity: 1; }
+
+/* El widget imprime el icono ANTES que la imagen, así que se usa flex
+   con `order` para colocar la imagen arriba y que el icono la solape. */
+#service .yoga-service .yoga-service-inner {
+	padding: 0 28px 30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#service .yoga-service .yoga-service-inner-img {
+	order: -1;
+	/* La imagen va a sangre: el contenedor tiene 28px de padding lateral. */
+	margin: 0 -28px 0 -28px;
+	border-radius: var(--yoga-radius) var(--yoga-radius) 0 0;
+	overflow: hidden;
+}
+
+#service .yoga-service .yoga-service-inner-img img {
+	width: 100%;
+	height: 230px;
+	object-fit: cover;
+	display: block;
+	transition: transform .7s var(--yoga-ease), filter .7s var(--yoga-ease);
+	filter: saturate(1.05);
+}
+
+#service .yoga-service:hover .yoga-service-inner-img img {
+	transform: scale(1.08);
+	filter: saturate(1.25) brightness(1.05);
+}
+
+#service .yoga-service .ser-icon {
+	position: relative;
+	width: 66px;
+	height: 66px;
+	margin: -33px auto 18px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--yoga-primary), #d946ef 55%, var(--yoga-pink));
+	box-shadow: 0 12px 28px -8px rgba(168, 85, 247, .95);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform .4s var(--yoga-ease);
+}
+
+#service .yoga-service:hover .ser-icon {
+	transform: scale(1.1) rotate(-8deg);
+}
+
+#service .yoga-service .ser-icon i {
+	font-size: 26px;
+	line-height: 1;
+	color: #fff;
+	text-shadow: none;
+}
+
+#service .yoga-service .yoga-service-inner h3 {
+	font-size: 21px;
+	color: var(--yoga-ink);
+	padding: 0;
+}
+
+#service .yoga-service .yoga-service-inner p {
+	font-size: 15px;
+	letter-spacing: .1px;
+	line-height: 1.7;
+	color: var(--yoga-body);
+	margin-bottom: 18px;
+}
+
+#service .yoga-service .btn-theme-two {
+	border-radius: 999px;
+	padding: 9px 20px;
+}
+
+/* --------------------------------------------------------------------------
+   9. Tarjetas del blog
+   -------------------------------------------------------------------------- */
+.yoga-blog-post-box {
+	background: var(--yoga-glass);
+	backdrop-filter: blur(16px) saturate(140%);
+	-webkit-backdrop-filter: blur(16px) saturate(140%);
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius);
+	overflow: hidden;
+	box-shadow: var(--yoga-shadow-sm);
+	height: 100%;
+	transition: transform .4s var(--yoga-ease), box-shadow .4s var(--yoga-ease),
+		background .4s var(--yoga-ease);
+}
+
+.yoga-blog-post-box:hover {
+	transform: translateY(-6px);
+	background: var(--yoga-glass-2);
+	box-shadow: var(--yoga-shadow-lg), 0 0 0 1px rgba(34, 211, 238, .3);
+}
+
+.yoga-blog-post-box .yoga-blog-thumb {
+	display: block;
+	position: relative;
+	overflow: hidden;
+}
+
+.yoga-blog-post-box .yoga-blog-thumb img {
+	width: 100%;
+	height: 240px;
+	object-fit: cover;
+	display: block;
+	transition: transform .7s var(--yoga-ease), filter .7s var(--yoga-ease);
+}
+
+.yoga-blog-post-box:hover .yoga-blog-thumb img {
+	transform: scale(1.07);
+	filter: saturate(1.2) brightness(1.04);
+}
+
+.yoga-blog-post-box .yoga-blog-date {
+	position: absolute;
+	left: 16px;
+	bottom: 16px;
+	background: rgba(10, 7, 20, .72);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid var(--yoga-glass-border);
+	color: var(--yoga-primary-400);
+	border-radius: 999px;
+	padding: 6px 15px;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: .6px;
+	box-shadow: 0 8px 20px -8px rgba(0, 0, 0, .8);
+}
+
+.yoga-blog-post-box .small {
+	padding: 22px 24px 26px;
+}
+
+.yoga-blog-post-box h1.title {
+	font-size: 20px;
+	line-height: 1.45;
+	margin: 0 0 10px;
+}
+
+.yoga-blog-post-box h1.title a {
+	color: var(--yoga-ink);
+}
+
+.yoga-blog-post-box h1.title a:hover {
+	color: var(--yoga-primary-400);
+}
+
+.yoga-blog-post-box .yoga-blog-category {
+	font-size: 13px;
+	color: var(--yoga-muted);
+}
+
+.yoga-blog-post-box .yoga-blog-category a {
+	color: var(--yoga-muted);
+}
+
+.yoga-blog-post-box .yoga-blog-category a:hover {
+	color: var(--yoga-cyan);
+}
+
+/* --------------------------------------------------------------------------
+   10. Bloque destacado (callout)
+   -------------------------------------------------------------------------- */
+/* El tema declara `background: url(...) no-repeat fixed 0 0 /cover`.
+   Con `fixed` el fondo se ancla a la ventana y el recorte sale mal
+   (además de ir mal en móviles). Se fuerza `scroll` y una posición explícita. */
+.yoga-callout {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: center 20%;
+}
+
+.yoga-callout .overlay {
+	background: rgba(8, 5, 15, .58);
+	padding: 118px 0;
+}
+
+.yoga-callout h3 {
+	font-size: 36px;
+	color: #fff;
+	padding-bottom: 14px;
+	text-shadow: 0 2px 18px rgba(0, 0, 0, .7);
+}
+
+.yoga-callout p {
+	color: rgba(255, 255, 255, .92);
+	font-size: 17px;
+	max-width: 760px;
+	margin-left: auto;
+	margin-right: auto;
+	text-shadow: 0 1px 12px rgba(0, 0, 0, .7);
+}
+
+.yoga-callout .btn-theme-two {
+	background: rgba(255, 255, 255, .1);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-color: rgba(255, 255, 255, .38);
+	color: #fff;
+}
+
+.yoga-callout .btn-theme-two:hover,
+.yoga-callout .btn-theme-two:focus {
+	background: #fff;
+	border-color: #fff;
+	color: #0a0714;
+}
+
+.yoga-callout .btn-theme {
+	box-shadow: 0 14px 34px -10px rgba(168, 85, 247, .8);
+}
+
+/* --------------------------------------------------------------------------
+   11. Pie de página
+   -------------------------------------------------------------------------- */
+.yoga-footer-widget-area {
+	padding: 66px 0 40px;
+}
+
+.yoga-footer-widget-area h6,
+.yoga-footer-widget-area .widgettitle,
+.yoga-footer-widget-area h2 {
+	font-size: 18px;
+	color: #fff;
+	letter-spacing: .5px;
+	margin-bottom: 18px;
+}
+
+.yoga-footer-widget-area p,
+.yoga-footer-widget-area li,
+.yoga-footer-widget-area a {
+	color: rgba(255, 255, 255, .62);
+	font-size: 15px;
+	line-height: 1.9;
+}
+
+.yoga-footer-widget-area a:hover {
+	color: var(--yoga-cyan);
+}
+
+.yoga-footer-widget-area ul {
+	padding-left: 0;
+	list-style: none;
+}
+
+.yoga-footer-copyright {
+	padding: 22px 0;
+	border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.yoga-footer-copyright p {
+	margin: 0;
+	color: rgba(255, 255, 255, .48);
+	font-size: 14px;
+}
+
+/* --------------------------------------------------------------------------
+   11b. Anulación de los colores claros que fija el tema
+   default.css impone valores concretos con más especificidad que las reglas
+   genéricas; aquí se restituyen los del tema oscuro.
+   -------------------------------------------------------------------------- */
+.yoga-blog-post-box .small,
+.yoga-blog-post-box .small > p {
+	color: var(--yoga-body);
+}
+
+.yoga-blog-post-box h1.title,
+.yoga-blog-post-box h1.title a {
+	color: var(--yoga-ink);
+}
+
+.yoga-heading h3,
+.yoga-heading h3 a {
+	color: var(--yoga-ink);
+}
+
+.yoga-widget.widget_text h2 {
+	color: var(--yoga-ink);
+}
+
+.yoga-page-breadcrumb-section h1,
+.yoga-page-breadcrumb-section h2 {
+	color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   12. Widgets de la barra lateral
+   Se limitan a #secondary: el pie de página usa la misma clase .yoga-widget
+   pero con fondo oscuro, y heredar tarjetas blancas lo dejaba ilegible.
+   -------------------------------------------------------------------------- */
+#secondary .yoga-widget {
+	background: var(--yoga-glass);
+	backdrop-filter: blur(16px) saturate(140%);
+	-webkit-backdrop-filter: blur(16px) saturate(140%);
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius);
+	padding: 24px 26px;
+	margin-bottom: 24px;
+	box-shadow: var(--yoga-shadow-sm);
+	transition: background .35s var(--yoga-ease), border-color .35s var(--yoga-ease);
+}
+
+#secondary .yoga-widget:hover {
+	background: var(--yoga-glass-2);
+	border-color: rgba(168, 85, 247, .35);
+}
+
+#secondary .yoga-widget h6,
+#secondary .yoga-widget .widgettitle,
+#secondary .yoga-widget h2 {
+	font-size: 17px;
+	color: var(--yoga-ink);
+	margin-bottom: 16px;
+	padding-bottom: 12px;
+	border-bottom: 1px solid var(--yoga-line);
+}
+
+#secondary .yoga-widget ul {
+	padding-left: 0;
+	list-style: none;
+	margin: 0;
+}
+
+#secondary .yoga-widget li {
+	padding: 5px 0;
+	font-size: 15px;
+}
+
+#secondary .yoga-widget a {
+	color: var(--yoga-body);
+}
+
+#secondary .yoga-widget a:hover {
+	color: var(--yoga-primary-400);
+}
+
+#secondary .yoga-widget .post-count,
+#secondary .yoga-widget .comment-count {
+	color: var(--yoga-muted);
+	font-size: 13px;
+}
+
+/* --------------------------------------------------------------------------
+   13. Entradas y páginas
+   -------------------------------------------------------------------------- */
+.yoga-blog-post-box .entry-content,
+.single-post .entry-content {
+	color: var(--yoga-body);
+	font-size: 16px;
+	line-height: 1.85;
+}
+
+.entry-content h2,
+.entry-content h3,
+.entry-content h4 {
+	margin: 34px 0 14px;
+}
+
+.entry-content p {
+	margin-bottom: 18px;
+}
+
+.entry-content a {
+	color: var(--yoga-primary-400);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.entry-content a:hover {
+	color: var(--yoga-pink);
+}
+
+.entry-content ul,
+.entry-content ol {
+	padding-left: 22px;
+}
+
+.entry-content li {
+	margin-bottom: 8px;
+}
+
+.yoga-page-breadcrumb {
+	font-size: 14px;
+	color: var(--yoga-muted);
+}
+
+/* Cabecera interna de página (imagen del tema).
+   El tema pone un velo gris claro (rgba(225,225,225,.5)); en tema oscuro
+   se sustituye por un degradado para que el título se lea. */
+.yoga-breadcrumb-section {
+	box-shadow: none;
+}
+
+.yoga-breadcrumb-section .overlay {
+	background: linear-gradient(95deg, rgba(8, 5, 15, .88) 0%, rgba(8, 5, 15, .55) 52%, rgba(8, 5, 15, .18) 100%);
+	padding: 150px 0;
+}
+
+.yoga-breadcrumb-title h1 {
+	color: #fff;
+	text-shadow: 0 3px 22px rgba(0, 0, 0, .6);
+}
+
+/* --------------------------------------------------------------------------
+   13b. Área de comentarios
+   El tema la deja como una caja blanca con sombra; se convierte en cristal.
+   -------------------------------------------------------------------------- */
+.comments-area,
+.yoga-card-box {
+	background: var(--yoga-glass);
+	backdrop-filter: blur(16px) saturate(140%);
+	-webkit-backdrop-filter: blur(16px) saturate(140%);
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius);
+	box-shadow: var(--yoga-shadow-sm);
+	color: var(--yoga-body);
+}
+
+.comments-title,
+.yoga-heading-bor-bt {
+	color: var(--yoga-ink);
+}
+
+.comment-list .comment-author .fn,
+.comment-list .comment-author .says {
+	color: var(--yoga-ink);
+}
+
+.comment-list .comment-meta a,
+.comment-list .reply a {
+	color: var(--yoga-muted);
+}
+
+.comment-list .comment-meta a:hover,
+.comment-list .reply a:hover {
+	color: var(--yoga-primary-400);
+}
+
+/* --------------------------------------------------------------------------
+   14. Paginación y formularios
+   La paginación real de WordPress es .navigation.pagination .nav-links
+   .page-numbers; los selectores .pagination > li > a del tema no coinciden.
+   -------------------------------------------------------------------------- */
+.navigation.pagination {
+	display: flex;
+	gap: 8px;
+	justify-content: center;
+	margin: 44px 0;
+}
+
+.navigation.pagination .nav-links {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.navigation.pagination .nav-links .page-numbers,
+.navigation.pagination .nav-links a {
+	margin: 0;
+	width: 46px;
+	height: 46px;
+	line-height: 44px;
+	padding: 0;
+	float: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	background: var(--yoga-glass);
+	border: 1px solid var(--yoga-glass-border);
+	color: var(--yoga-body);
+	transition: all .25s var(--yoga-ease);
+}
+
+.navigation.pagination .nav-links a:hover {
+	background: var(--yoga-glass-2);
+	color: #fff;
+	border-color: rgba(168, 85, 247, .5);
+}
+
+.navigation.pagination .nav-links .page-numbers.current,
+.navigation.pagination .nav-links a:hover {
+	background: linear-gradient(120deg, var(--yoga-primary), var(--yoga-pink));
+	border-color: transparent;
+	color: #fff;
+	box-shadow: 0 10px 24px -10px rgba(168, 85, 247, .9);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius-sm);
+	padding: 12px 16px;
+	color: var(--yoga-ink);
+	background: rgba(255, 255, 255, .04);
+	transition: border-color .25s var(--yoga-ease), box-shadow .25s var(--yoga-ease),
+		background .25s var(--yoga-ease);
+	width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+	color: var(--yoga-muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	border-color: var(--yoga-primary);
+	background: rgba(255, 255, 255, .07);
+	box-shadow: 0 0 0 3px rgba(168, 85, 247, .18);
+	outline: none;
+}
+
+label {
+	color: var(--yoga-ink);
+	font-weight: 500;
+}
+
+/* El tema fija `border: 2px solid` (sin color) en el área de comentarios,
+   que hereda el color del texto y sale casi negro. */
+.comment-form-comment textarea,
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"] {
+	border: 1px solid var(--yoga-glass-border);
+	border-radius: var(--yoga-radius-sm);
+	padding: 14px 16px;
+	color: var(--yoga-ink);
+	background: rgba(255, 255, 255, .04);
+}
+
+.comment-form-comment textarea:focus,
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus {
+	border-color: var(--yoga-primary);
+	box-shadow: 0 0 0 3px rgba(168, 85, 247, .18);
+}
+
+.comment-form .form-submit .btn,
+.comment-form #submit {
+	background: linear-gradient(120deg, var(--yoga-primary), var(--yoga-pink));
+	border-color: transparent;
+	color: #fff;
+	border-radius: 999px;
+	padding: 12px 28px;
+	font-weight: 600;
+}
+
+.comment-form .form-submit .btn:hover,
+.comment-form #submit:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 14px 32px -12px rgba(168, 85, 247, .9);
+}
+
+/* Buscador (markup input-group de Bootstrap del tema) */
+#searchform .input-group {
+	display: flex;
+	width: 100%;
+}
+#searchform .input-group .form-control {
+	border-radius: var(--yoga-radius-sm) 0 0 var(--yoga-radius-sm);
+	border-right: 0;
+	min-width: 0;
+}
+
+#searchform .input-group-btn {
+	width: auto;
+}
+
+#searchform .input-group-btn .btn {
+	background: linear-gradient(120deg, var(--yoga-primary), var(--yoga-pink));
+	border-color: transparent;
+	color: #fff;
+	border-radius: 0 var(--yoga-radius-sm) var(--yoga-radius-sm) 0;
+	padding: 0 16px;
+	transition: filter .25s var(--yoga-ease);
+}
+
+#searchform .input-group-btn .btn:hover {
+	filter: brightness(1.15);
+	color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   15. Botón "volver arriba"
+   -------------------------------------------------------------------------- */
+.yoga-to-top {
+	position: fixed;
+	right: 26px;
+	bottom: 26px;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: linear-gradient(135deg, var(--yoga-primary), var(--yoga-pink));
+	color: #fff;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	box-shadow: 0 14px 32px -10px rgba(168, 85, 247, .9);
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(14px);
+	transition: all .35s var(--yoga-ease);
+	cursor: pointer;
+	z-index: 900;
+}
+
+.yoga-to-top.is-visible {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.yoga-to-top:hover {
+	transform: translateY(-3px) scale(1.06);
+	box-shadow: 0 18px 40px -10px rgba(217, 70, 239, .95);
+}
+
+/* --------------------------------------------------------------------------
+   16. Animación de entrada
+   -------------------------------------------------------------------------- */
+.yoga-reveal {
+	opacity: 0;
+	transform: translateY(28px);
+	transition: opacity .7s var(--yoga-ease), transform .7s var(--yoga-ease);
+	will-change: opacity, transform;
+}
+
+.yoga-reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+.yoga-reveal[data-delay="1"] { transition-delay: .1s; }
+.yoga-reveal[data-delay="2"] { transition-delay: .2s; }
+.yoga-reveal[data-delay="3"] { transition-delay: .3s; }
+.yoga-reveal[data-delay="4"] { transition-delay: .4s; }
+.yoga-reveal[data-delay="5"] { transition-delay: .5s; }
+
+/* --------------------------------------------------------------------------
+   17. Adaptación a pantallas pequeñas
+   -------------------------------------------------------------------------- */
+@media (max-width: 991px) {
+	.yoga-section { padding: 68px 0; }
+
+	#yoga-slider .item img { height: 540px; }
+
+	#yoga-slider .slide-caption { width: 100%; }
+
+	#yoga-slider .slide-caption h1 { font-size: 42px; }
+
+	.yoga-callout h3 { font-size: 30px; }
+}
+
+@media (max-width: 767px) {
+	.yoga-section { padding: 58px 0; }
+
+	.yoga-heading { margin-bottom: 36px; }
+
+	#yoga-slider .item img { height: 470px; }
+
+	#yoga-slider .slide-caption h1 { font-size: 32px; line-height: 1.18; }
+
+	#yoga-slider .slide-caption .description p { font-size: 15px; line-height: 1.65; }
+
+	.yoga-callout .overlay { padding: 56px 0; }
+
+	.yoga-callout h3 { font-size: 25px; }
+
+	.yoga-callout p { font-size: 15px; }
+
+	.yoga-to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; }
+}
+
+@media (max-width: 480px) {
+	#yoga-slider .item img { height: 430px; }
+}
+
+/* --------------------------------------------------------------------------
+   18. Accesibilidad: menos movimiento
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+	html { scroll-behavior: auto; }
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: .001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .001ms !important;
+	}
+
+	.yoga-reveal {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   19. Impresión
+   -------------------------------------------------------------------------- */
+@media print {
+	.yoga-head-detail,
+	.yoga-main-nav,
+	.yoga-to-top,
+	.yoga-preloader,
+	.yoga-footer-widget-area {
+		display: none !important;
+	}
+
+	body,
+	.wrapper {
+		background: #fff !important;
+		color: #000 !important;
+	}
+}

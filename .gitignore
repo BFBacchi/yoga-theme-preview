@@ -1,0 +1,29 @@
+# Entorno de ejecución (no se versiona)
+/wordpress/wp-includes/
+/wordpress/wp-admin/
+/wordpress/wp-content/uploads/
+/wordpress/wp-content/languages/
+/wordpress/wp-content/plugins/
+/wordpress/wp-content/database/
+/wordpress/wp-content/debug.log
+/wordpress/wp-config.php
+/wordpress/wp-content/upgrade/
+/wordpress/wp-content/cache/
+
+# Binarios y descargas
+/php
+/php.tar.gz
+/wordpress.tar.gz
+/sqlite.zip
+/candidates/
+/scrape.log
+/server.log
+/server.pid
+
+# Sistema
+.DS_Store
+Thumbs.db
+*.swp
+*~
+__pycache__/
+*.pyc

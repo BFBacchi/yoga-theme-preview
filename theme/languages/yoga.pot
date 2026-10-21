@@ -1,0 +1,366 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Yoga\n"
+"POT-Creation-Date: 2019-09-04 13:11+0530\n"
+"PO-Revision-Date: 2019-09-04 13:11+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: 404.php:15
+msgid "404"
+msgstr ""
+
+#: 404.php:27
+msgid "4"
+msgstr ""
+
+#: 404.php:28
+msgid "Oops! That page can&rsquo;t be found."
+msgstr ""
+
+#: 404.php:29
+msgid ""
+"It looks like nothing was found at this location. Maybe try one of the links "
+"below or a search?"
+msgstr ""
+
+#: 404.php:30
+msgid "Go Back"
+msgstr ""
+
+#: comments.php:35
+#, php-format
+msgctxt "comments title"
+msgid "%1$1s Comment for &ldquo;%2$2s&rdquo;"
+msgid_plural "%1$1s Comments for &ldquo;%2$2s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:51 comments.php:72
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:54 comments.php:75
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:55 comments.php:76
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:86
+msgid "Comments are closed."
+msgstr ""
+
+#: content.php:20 sections/home-blog.php:53 single.php:49
+msgid "By"
+msgstr ""
+
+#: content.php:40
+msgid "Pages:"
+msgstr ""
+
+#: footer.php:35
+#, php-format
+msgid "Theme by %1$s"
+msgstr ""
+
+#: functions.php:74
+msgid "Primary menu"
+msgstr ""
+
+#: functions.php:75 header.php:46
+msgid "Social Links Menu"
+msgstr ""
+
+#: functions.php:163
+msgid "Sidebar Widget Area"
+msgstr ""
+
+#: functions.php:173
+msgid "Footer Widget Area"
+msgstr ""
+
+#: functions.php:184
+msgid "Slider Widgets Area"
+msgstr ""
+
+#: functions.php:192
+msgid "Service Widget Area"
+msgstr ""
+
+#: functions.php:223 functions.php:231
+msgid "Read More"
+msgstr ""
+
+#: header.php:20
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:43
+#, php-format
+msgid "%d"
+msgid_plural "%d"
+msgstr[0] ""
+msgstr[1] ""
+
+#: header.php:79
+msgid "Toggle Navigation"
+msgstr ""
+
+#: inc/ansar/customize/customize-pro/class-customize.php:64
+msgid "Yoga Pro"
+msgstr ""
+
+#: inc/ansar/customize/customize-pro/class-customize.php:65
+msgid "Go Pro"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_copyright.php:7
+msgid "Footer Settings"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_copyright.php:11
+msgid "Background Setting"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_copyright.php:26
+msgid "Select Column Layout"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_header.php:9
+msgid "Header Settings"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_header.php:13
+msgid "Header Top Bar Setting"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_header.php:24
+#: inc/ansar/customize/yoga_customize_homepage.php:29
+#: inc/ansar/customize/yoga_customize_homepage.php:73
+#: inc/ansar/customize/yoga_customize_homepage.php:152
+#: inc/ansar/customize/yoga_customize_homepage.php:323
+msgid "Hide / Show Section"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_header.php:37
+msgid "Info one"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_header.php:50
+msgid "Info two"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:7
+msgid "Frontpage Settings"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:17
+msgid "Slider Section"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:42
+#: inc/ansar/customize/yoga_customize_homepage.php:86
+#: inc/ansar/customize/yoga_customize_homepage.php:177
+#: inc/ansar/customize/yoga_customize_homepage.php:347
+msgid "Overlay Color"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:59
+msgid "Service Section"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:98
+#: inc/ansar/customize/yoga_customize_homepage.php:188
+#: inc/ansar/customize/yoga_customize_homepage.php:358
+msgid "Text Color"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:113
+#: inc/ansar/customize/yoga_customize_homepage.php:204
+#: inc/ansar/customize/yoga_customize_homepage.php:386
+#: inc/ansar/widget/yoga-service.php:102 inc/ansar/widget/yoga-slider.php:104
+msgid "Title"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:125
+#: inc/ansar/customize/yoga_customize_homepage.php:217
+#: inc/ansar/customize/yoga_customize_homepage.php:399
+#: inc/ansar/widget/yoga-service.php:109 inc/ansar/widget/yoga-slider.php:111
+msgid "Description"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:139
+msgid "Callout Section"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:166
+msgid "Background Image"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:230
+#: inc/ansar/customize/yoga_customize_homepage.php:269
+#: inc/ansar/widget/yoga-service.php:137 inc/ansar/widget/yoga-slider.php:136
+msgid "Button Text"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:243
+#: inc/ansar/customize/yoga_customize_homepage.php:282
+#: inc/ansar/widget/yoga-service.php:140 inc/ansar/widget/yoga-slider.php:139
+msgid "Button Link"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:256
+#: inc/ansar/customize/yoga_customize_homepage.php:295
+#: inc/ansar/widget/yoga-service.php:158 inc/ansar/widget/yoga-slider.php:152
+msgid "Open link in a new tab"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:308
+msgid "Blog Section"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:336
+msgid "Choose Background Image"
+msgstr ""
+
+#: inc/ansar/customize/yoga_customize_homepage.php:373
+msgid ""
+"Hide post meta from blog pages, archive pages, categories, authors, etc."
+msgstr ""
+
+#: inc/ansar/widget/yoga-service.php:15
+msgid "BY - Service Widget"
+msgstr ""
+
+#: inc/ansar/widget/yoga-service.php:97
+msgid ""
+"Enter  Font Awesome icon class ( like: fa-cloud ). <a href=\"//fontawesome."
+"io/fa_icons/\" target=\"blank\" >Here all icon </a>"
+msgstr ""
+
+#: inc/ansar/widget/yoga-service.php:115 inc/ansar/widget/yoga-slider.php:117
+msgid "Image"
+msgstr ""
+
+#: inc/ansar/widget/yoga-service.php:121 inc/ansar/widget/yoga-service.php:128
+#: inc/ansar/widget/yoga-slider.php:123 inc/ansar/widget/yoga-slider.php:130
+msgid "Upload Image"
+msgstr ""
+
+#: inc/ansar/widget/yoga-service.php:132
+msgid "Hide Featured Image"
+msgstr ""
+
+#: inc/ansar/widget/yoga-slider.php:17
+msgid "BY - Slider Widget"
+msgstr ""
+
+#: inc/template-tags.php:29
+#, php-format
+msgctxt "post date"
+msgid "Posted on %s"
+msgstr ""
+
+#: inc/template-tags.php:35
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:53 inc/template-tags.php:60
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:55
+#, php-format
+msgid "Posted in %1$s"
+msgstr ""
+
+#: inc/template-tags.php:62
+#, php-format
+msgid "Tagged %1$s"
+msgstr ""
+
+#: inc/template-tags.php:68
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:68
+msgid "1 Comment"
+msgstr ""
+
+#: inc/template-tags.php:68
+msgid "% Comments"
+msgstr ""
+
+#: inc/template-tags.php:75
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: search.php:21
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: search.php:25
+msgid "Nothing found"
+msgstr ""
+
+#: search.php:27
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: searchform.php:3
+msgctxt "placeholder"
+msgid "Search;"
+msgstr ""
+
+#: single.php:30
+msgid "by"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Yoga"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://themeansar.com/themes/yoga-wordpress-theme/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Yoga could be a WordPress theme designed for Yoga or blog website. With Yoga "
+"your web site is made to last and will stand out from the crowd. It comes "
+"with all focus these kind of Rehabilitation, aloyoga, physiotherapist, "
+"Medical Clinic, therapist, private Hospital, Sports therapy Clinic, Massage "
+"therapist,Yoga, yoga, namastheyoga, . that supply Medical or therapy "
+"connected services."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Themeansar"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://themeansar.com"
+msgstr ""
