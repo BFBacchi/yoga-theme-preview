@@ -80,7 +80,9 @@ if [ ! -f "$WP/wp-config.php" ]; then
 		foreach($keys as $k){
 			$s="";
 			for($i=0;$i<64;$i++){ $s.=$chars[random_int(0,strlen($chars)-1)]; }
-			echo "define( \"$k\", \"$s\" );\n";
+			# var_export() produce un literal PHP de una sola comilla: los
+			# caracteres $ y \ quedan literales y no se interpolan.
+			echo "define( \"$k\", " . var_export($s, true) . " );\n";
 		}' )"
 
 	cat > "$WP/wp-config.php" <<PHPEOF
@@ -208,7 +210,8 @@ cat <<EOF
 
   Sitio   : http://localhost:$PORT/
   Panel   : http://localhost:$PORT/wp-admin/  (admin / admin)
-  Enlace  : http://$BASE/wordpress  ← el tema está enlazado desde $REPO_ROOT/theme
+  Instalación: $BASE/wordpress
+  Tema enlazado desde: $REPO_ROOT/theme
 
   Arrancar/parar:  $BASE/serve.sh {start|stop|restart}
 
